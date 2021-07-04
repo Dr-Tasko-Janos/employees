@@ -1,5 +1,7 @@
 package emplyoees;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -15,4 +17,20 @@ public class EmployeesApplication {
 //    public HelloService helloService() {
 //        return new HelloService();
 //    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
+
+    @Bean
+    public ModelMapper modelMapper2() {
+        return new ModelMapper();
+    }
+
+    //Hogy a Jackson problem modul megfelelően működjön felül kell bírálnunk az objectMapper-t
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper().findAndRegisterModules();
+    }
 }
